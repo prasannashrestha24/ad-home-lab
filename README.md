@@ -73,13 +73,9 @@ Build a small domain environment from scratch, then break and fix it on purpose 
 
 ![Domain join](screenshots/03-domain-join.png)
 
-**Signed in as a domain user**
+**Signed in as a domain user (`whoami`) and DNS resolving `lab.local` to a single address (`nslookup`)**
 
-![whoami output](screenshots/04-whoami.png)
-
-**DNS resolving `lab.local` to a single address**
-
-![nslookup output](screenshots/05-nslookup.png)
+![whoami and nslookup output](screenshots/05-nslookup.png)
 
 ## What I learned
 
