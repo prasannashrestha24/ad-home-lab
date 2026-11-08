@@ -38,6 +38,12 @@ Build a small domain environment from scratch, then break and fix it on purpose 
 - Tested with `ping` and `nslookup lab.local` before joining.
 - Joined `CLIENT01` to `lab.local`, signed in as a domain user and moved the computer account into the Computers OU.
 
+### Day 4: Group Policy
+- Created a Group Policy Object called `Staff-User-Restrictions` and linked it to the Staff OU.
+- Enabled two user policies: block access to Control Panel and PC settings, and remove the Recycle Bin icon from the desktop.
+- Signed in on `CLIENT01` as a domain user and ran `gpupdate /force` and `gpresult /r` to check the policy.
+- Confirmed that `Staff-User-Restrictions` is listed under Applied Group Policy Objects for the user.
+
 ## Troubleshooting notes
 
 ### 1. No internet on the NAT Network
@@ -77,17 +83,22 @@ Build a small domain environment from scratch, then break and fix it on purpose 
 
 ![whoami and nslookup output](screenshots/05-nslookup.png)
 
+**Group Policy applied to a domain user (`gpresult /r`)**
+
+![gpresult output](screenshots/06-gpresult.png)
+
 ## What I learned
 
 - How a domain controller, DNS and a client fit together, and why DNS is the first thing to check when a join fails.
 - Reading `ipconfig`, `ping`, `nslookup` and `dcdiag` output, and telling real faults from harmless warnings.
 - Organising users, computers and groups with OUs, and moving objects between them.
 - Using snapshots to make risky changes safely.
+- How a GPO is linked to an OU, and how to check it applied with `gpupdate /force` and `gpresult /r`.
 
 ## Next steps
 
-- Group Policy: create and test GPOs for a user OU
-- Password and account lockout policies, and troubleshooting lockouts
+- Account lockout policy, and finding and fixing a lockout
+- More Group Policy: password policy and a mapped network drive
 - Microsoft Entra ID and Entra Connect (hybrid identity)
 - Intune enrolment and compliance policies
 - Microsoft Graph PowerShell for bulk user reports
